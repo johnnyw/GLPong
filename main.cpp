@@ -208,7 +208,7 @@ struct Shader {
             char *infoLog = new char[infoLogLength];
             glGetShaderInfoLog(_id, infoLogLength, NULL, infoLog);
             std::string result(infoLog);
-            delete infoLog;
+            delete[] infoLog;
             return result;
         }
 
@@ -252,7 +252,7 @@ struct Program {
             char *infoLog = new char[infoLogLength];
             glGetShaderInfoLog(_id, infoLogLength, NULL, infoLog);
             std::string result(infoLog);
-            delete infoLog;
+            delete[] infoLog;
             return result;
         }
 
@@ -597,7 +597,7 @@ void drawRectangles(const std::vector<Rect> &rects, const std::vector<Color> &co
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numCoordinates, vertices, GL_DYNAMIC_DRAW);
 
-    delete vertices;
+    delete[] vertices;
 
     glDrawArrays(GL_TRIANGLES, 0, numCoordinates / 2);
 }
